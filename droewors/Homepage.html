@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biltong Boulevard — Premium, Artisanal Biltong</title>
+  <link rel="icon" type="png" href="Biltong_texture_Logo.png" />
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<header class="site-header">
+  <div class="header-container">
+    <div class="header-brand">
+      <img src="images/Biltong_texture_Logo.png" alt="Biltong Boutique logo" class="brand-logo"/>
+      <h1 class="brand-name">Biltong Boulevard</h1>
+    </div>
+    <nav class="header-nav" aria-label="Primary navigation">
+      <ul class="nav-list">
+        <li><a href="#home" class="nav-btn">Home</a></li>
+        <li><a href="#shop" class="nav-btn">Shop</a></li>
+        <li><a href="#about" class="nav-btn">About</a></li>
+        <li><a href="#faq" class="nav-btn">FAQ</a></li>
+        <li><a href="#contact" class="nav-btn">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="sidebar__actions">
+      <button class="cart-button cart-button--sidebar" id="cart-button-side" aria-label="Open cart" aria-haspopup="dialog">
+        🛒 <span class="cart-count" id="cart-count-side" aria-live="polite">0</span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </aside>
+
+
+  <div id="overlay" class="overlay" hidden></div>
+
+
+  <main id="home" class="main-content" tabindex="-1">
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Handcrafted, Artisanal Biltong</h1>
+          <p class="hero-subtitle">Premium cuts. Traditional curing. Bold South African flavors delivered to your door.</p>
+          <div class="hero-cta">
+            <a href="#shop" class="btn">Shop Bestsellers</a>
+            <button class="btn btn-secondary" id="modal-btn" aria-haspopup="dialog">What makes ours special?</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="shop" class="gallery" aria-labelledby="shop-title">
+      <div class="container">
+        <h2 id="shop-title" class="gallery-title">Shop Biltong Favourites</h2>
+
+        <div class="carousel" aria-roledescription="carousel">
+          <div class="carousel-container" id="carousel-container">
+  
+            <article class="carousel-item product" data-id="biltong-classic" data-name="Classic Beef Biltong 100g" data-price="60.00" data-image="images/classic.jpg">
+              <img src="images/Beef.png" alt="Classic Beef Biltong 250g — sliced" loading="lazy"/>
+              <div class="product-info">
+                <h3 class="product-title">Beef Biltong 100g</h3>
+                <p class="product-desc">Traditional cure, medium cut. Pure beef flavor.</p>
+                <div class="product-buy">
+                  <span class="product-price">R60.00</span>
+                  <button class="btn add-to-cart" aria-label="Add Classic Beef Biltong 100g to cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="carousel-item product" data-id="biltong-chilli" data-name="Chilli Bite Biltong 100g" data-price="60.00" data-image="images/chilli.jpg">
+              <img src="images/Babelas.webp" alt="Chilli Bite Biltong 200g — spiced" loading="lazy"/>
+              <div class="product-info">
+                <h3 class="product-title">Babelas Mix 100g</h3>
+                <p class="product-desc">Fiery chilli kick with a tender bite.</p>
+                <div class="product-buy">
+                  <span class="product-price">R60.00</span>
+                  <button class="btn add-to-cart" aria-label="Add Chilli Bite Biltong 200g to cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+ 
+            <article class="carousel-item product" data-id="biltong-garlic" data-name="Droewors 100g" data-price="70.00" data-image="images/garlic.jpg">
+              <img src="images/Droewors.webp" alt="Droewors 100g — seasoned" loading="lazy"/>
+              <div class="product-info">
+                <h3 class="product-title">Droëwors 100g</h3>
+                <p class="product-desc">Aromatic droewors flavor.</p>
+                <div class="product-buy">
+                  <span class="product-price">R70.00</span>
+                  <button class="btn add-to-cart" aria-label="Add Droewors 100g to cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="carousel-item product" data-id="Trawal" data-name="Trawal Mix 100g" data-price="60.00" data-image="images/garlic.jpg">
+              <img src="images/Trawal.jpg" alt="Garlic & Herb Biltong 250g — seasoned" loading="lazy"/>
+              <div class="product-info">
+                <h3 class="product-title">Trawal Mix 100g</h3>
+                <p class="product-desc">Authentic mix of biltong flavors.</p>
+                <div class="product-buy">
+                  <span class="product-price">R60.00</span>
+                  <button class="btn add-to-cart" aria-label="Add Trawal Mix 100g to cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="prev-btn" aria-label="Previous product">❮</button>
+            <button class="carousel-btn" id="next-btn" aria-label="Next product">❯</button>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Choose product"></div>
+      </div>
+    </section>
+
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Biltong Boutique</h2>
+        <p>We craft premium biltong with responsibly sourced beef, time-honoured curing, and carefully balanced spices. Every batch is small, consistent, and irresistibly moreish.</p>
+      </div>
+    </section>
+
+
+    <section id="faq" class="accordion">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="accordion-item">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+            <h3>How do I store my biltong?</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content" role="region">
+            <div class="accordion-body">
+              <p>Keep biltong in a cool, dry place. Once opened, store in a breathable paper bag and consume within a week. Avoid sealed plastic in warm conditions to prevent moisture build-up.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+            <h3>Is your biltong gluten-free?</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content" role="region">
+            <div class="accordion-body">
+              <p>Yes. Our spice blends are gluten-free and contain no MSG. Please see each product page for full ingredients.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+            <h3>When will my order arrive?</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content" role="region">
+            <div class="accordion-body">
+              <p>Orders ship within 1–2 business days. Delivery is typically 2–4 days nationwide in South Africa.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>More Equiries?</p><br>
+        <p>Whatsapp Us: 062 946 0603 </p>
+      </div>
+    </section>
+  </main>
+
+ 
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <h2 id="modal-title">Our Craft</h2>
+      <p>We select prime beef, marinate with house spice blends, and air-dry to the perfect tenderness. No shortcuts. Just honest, flavour-first biltong.</p>
+      <div class="modal-actions">
+        <a href="#shop" class="btn">Shop Now</a>
+        <button class="btn btn-secondary" id="modal-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <aside id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-describedby="cart-desc" aria-hidden="true">
+    <div class="cart-header">
+      <h2 id="cart-title">Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">×</button>
+    </div>
+    <p id="cart-desc" class="sr-only">A list of items you have added to your cart.</p>
+    <ul id="cart-items" class="cart-items" aria-live="polite"></ul>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cart-total">R0.00</strong>
+      </div>
+      <button class="btn cart-checkout" id="checkout-btn" aria-label="Proceed to checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Biltong Boutique. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
