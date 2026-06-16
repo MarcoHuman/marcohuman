@@ -4,31 +4,287 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marco Human — ICT Multimedia Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
+  <!-- SVG sprite — must be first in body so <use> can reference it -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 
-  <!-- ===== NAVIGATION ===== -->
+  <!-- ===================== NAV / TASKBAR ===================== -->
+
+  <!-- icon-home : classic Win95 house -->
+  <symbol id="icon-home" viewBox="0 0 32 32">
+    <rect x="11" y="16" width="10" height="10" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <polygon points="4,17 16,4 28,17" fill="none" stroke="#000080" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="13" y="20" width="4" height="6" fill="#000080"/>
+  </symbol>
+
+  <!-- icon-about : pixel person / ID card -->
+  <symbol id="icon-about" viewBox="0 0 32 32">
+    <rect x="3" y="7" width="26" height="18" rx="0" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <circle cx="11" cy="14" r="4" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <line x1="19" y1="12" x2="27" y2="12" stroke="#000080" stroke-width="1.5"/>
+    <line x1="19" y1="16" x2="25" y2="16" stroke="#000080" stroke-width="1.5"/>
+    <line x1="19" y1="20" x2="27" y2="20" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-portfolio : open folder with image -->
+  <symbol id="icon-portfolio" viewBox="0 0 32 32">
+    <path d="M3 10 H13 L15 7 H29 V25 H3 Z" fill="none" stroke="#000080" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="7" y="14" width="8" height="7" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <polygon points="7,21 11,17 15,21" fill="#000080"/>
+    <circle cx="9" cy="16" r="1" fill="#000080"/>
+  </symbol>
+
+  <!-- icon-services : toolbox / wrench + gear -->
+  <symbol id="icon-services" viewBox="0 0 32 32">
+    <rect x="4" y="14" width="17" height="12" rx="0" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <rect x="9" y="11" width="7" height="4" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <line x1="4" y1="19" x2="21" y2="19" stroke="#000080" stroke-width="1.5"/>
+    <circle cx="24" cy="11" r="5" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <circle cx="24" cy="11" r="2" fill="#000080"/>
+    <line x1="24" y1="6"  x2="24" y2="4"  stroke="#000080" stroke-width="1.5"/>
+    <line x1="24" y1="16" x2="24" y2="18" stroke="#000080" stroke-width="1.5"/>
+    <line x1="19" y1="11" x2="17" y2="11" stroke="#000080" stroke-width="1.5"/>
+    <line x1="29" y1="11" x2="31" y2="11" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-contact : envelope / letter -->
+  <symbol id="icon-contact" viewBox="0 0 32 32">
+    <rect x="3" y="8" width="26" height="17" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <polyline points="3,8 16,18 29,8" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <line x1="3"  y1="25" x2="11" y2="17" stroke="#000080" stroke-width="1.5"/>
+    <line x1="29" y1="25" x2="21" y2="17" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- ===================== DESKTOP ICONS ===================== -->
+
+  <!-- icon-my-projects : yellow folder -->
+  <symbol id="icon-my-projects" viewBox="0 0 32 32">
+    <path d="M2 9 H12 L14 6 H30 V26 H2 Z" fill="#FFCA28" stroke="#000080" stroke-width="1.5" stroke-linejoin="miter"/>
+    <path d="M2 12 H30" stroke="#000080" stroke-width="1"/>
+  </symbol>
+
+  <!-- icon-email-client : old-school e-mail envelope with @ -->
+  <symbol id="icon-email-client" viewBox="0 0 32 32">
+    <rect x="2" y="6" width="28" height="20" fill="white" stroke="#000080" stroke-width="1.5"/>
+    <polyline points="2,6 16,16 30,6" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <text x="16" y="23" font-size="8" text-anchor="middle" fill="#000080" font-family="sans-serif" font-weight="bold">@</text>
+  </symbol>
+
+  <!-- icon-browser : globe with grid = Internet Explorer feel -->
+  <symbol id="icon-browser" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="13" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <ellipse cx="16" cy="16" rx="5" ry="13" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <line x1="3"  y1="11" x2="29" y2="11" stroke="#000080" stroke-width="1.5"/>
+    <line x1="3"  y1="21" x2="29" y2="21" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-paint : canvas with paint stroke = MS Paint -->
+  <symbol id="icon-paint" viewBox="0 0 32 32">
+    <rect x="4" y="4" width="20" height="22" fill="white" stroke="#000080" stroke-width="1.5"/>
+    <rect x="7" y="7" width="6" height="4" fill="#ff0000"/>
+    <rect x="15" y="7" width="6" height="4" fill="#0000ff"/>
+    <rect x="7" y="13" width="6" height="4" fill="#ffff00"/>
+    <rect x="15" y="13" width="6" height="4" fill="#00aa00"/>
+    <!-- brush handle -->
+    <line x1="22" y1="20" x2="28" y2="26" stroke="#000080" stroke-width="2.5" stroke-linecap="square"/>
+    <rect x="21" y="18" width="4" height="4" fill="#c0c0c0" stroke="#000080" stroke-width="1"/>
+  </symbol>
+
+  <!-- icon-notepad : page with lines -->
+  <symbol id="icon-notepad" viewBox="0 0 32 32">
+    <rect x="5" y="3" width="22" height="26" fill="white" stroke="#000080" stroke-width="1.5"/>
+    <line x1="9"  y1="9"  x2="23" y2="9"  stroke="#000080" stroke-width="1"/>
+    <line x1="9"  y1="13" x2="23" y2="13" stroke="#000080" stroke-width="1"/>
+    <line x1="9"  y1="17" x2="23" y2="17" stroke="#000080" stroke-width="1"/>
+    <line x1="9"  y1="21" x2="19" y2="21" stroke="#000080" stroke-width="1"/>
+    <!-- spiral binding -->
+    <line x1="5" y1="3" x2="5" y2="29" stroke="#000080" stroke-width="2"/>
+    <circle cx="5" cy="7"  r="1.5" fill="white" stroke="#000080" stroke-width="1"/>
+    <circle cx="5" cy="14" r="1.5" fill="white" stroke="#000080" stroke-width="1"/>
+    <circle cx="5" cy="21" r="1.5" fill="white" stroke="#000080" stroke-width="1"/>
+  </symbol>
+
+  <!-- ===================== SERVICES ===================== -->
+
+  <!-- icon-uiux : monitor with wireframe grid -->
+  <symbol id="icon-uiux" viewBox="0 0 32 32">
+    <rect x="3" y="4" width="26" height="18" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <line x1="3"  y1="10" x2="29" y2="10" stroke="#000080" stroke-width="1"/>
+    <line x1="13" y1="4"  x2="13" y2="22" stroke="#000080" stroke-width="1"/>
+    <rect x="16" y="13" width="9" height="6" fill="#000080" opacity="0.15" stroke="#000080" stroke-width="1"/>
+    <rect x="5"  y="13" width="5" height="6" fill="#000080" opacity="0.15" stroke="#000080" stroke-width="1"/>
+    <rect x="5"  y="6"  width="5" height="2" fill="#000080"/>
+    <!-- monitor stand -->
+    <line x1="16" y1="22" x2="16" y2="27" stroke="#000080" stroke-width="1.5"/>
+    <line x1="10" y1="27" x2="22" y2="27" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-mobile : phone with screen UI -->
+  <symbol id="icon-mobile" viewBox="0 0 32 32">
+    <rect x="9" y="2" width="14" height="28" rx="0" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <rect x="11" y="5" width="10" height="16" fill="none" stroke="#000080" stroke-width="1"/>
+    <circle cx="16" cy="25" r="1.5" fill="#000080"/>
+    <!-- speaker slot -->
+    <line x1="14" y1="3.5" x2="18" y2="3.5" stroke="#000080" stroke-width="1.5"/>
+    <!-- screen content -->
+    <line x1="12" y1="9"  x2="20" y2="9"  stroke="#000080" stroke-width="1"/>
+    <line x1="12" y1="12" x2="18" y2="12" stroke="#000080" stroke-width="1"/>
+    <rect x="12" y="14" width="3" height="4" fill="#000080" opacity="0.5"/>
+    <rect x="17" y="14" width="3" height="4" fill="#000080" opacity="0.5"/>
+  </symbol>
+
+  <!-- icon-motion : clapperboard / film frame -->
+  <symbol id="icon-motion" viewBox="0 0 32 32">
+    <rect x="3" y="8" width="26" height="20" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <!-- clapperboard top -->
+    <rect x="3" y="4" width="26" height="6" fill="#000080"/>
+    <!-- clapperboard stripes -->
+    <line x1="8"  y1="4" x2="6"  y2="10" stroke="white" stroke-width="2"/>
+    <line x1="13" y1="4" x2="11" y2="10" stroke="white" stroke-width="2"/>
+    <line x1="18" y1="4" x2="16" y2="10" stroke="white" stroke-width="2"/>
+    <line x1="23" y1="4" x2="21" y2="10" stroke="white" stroke-width="2"/>
+    <!-- play button on screen -->
+    <polygon points="12,14 12,24 24,19" fill="#000080"/>
+  </symbol>
+
+  <!-- icon-webdev : code brackets < / > -->
+  <symbol id="icon-webdev" viewBox="0 0 32 32">
+    <rect x="2" y="5" width="28" height="22" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <!-- top bar -->
+    <line x1="2" y1="10" x2="30" y2="10" stroke="#000080" stroke-width="1.5"/>
+    <circle cx="5"  cy="7.5" r="1" fill="#000080"/>
+    <circle cx="9"  cy="7.5" r="1" fill="#000080"/>
+    <circle cx="13" cy="7.5" r="1" fill="#000080"/>
+    <!-- < / > symbols -->
+    <polyline points="9,15 5,19 9,23"  fill="none" stroke="#000080" stroke-width="2" stroke-linejoin="miter"/>
+    <polyline points="23,15 27,19 23,23" fill="none" stroke="#000080" stroke-width="2" stroke-linejoin="miter"/>
+    <line x1="14" y1="14" x2="18" y2="24" stroke="#000080" stroke-width="2"/>
+  </symbol>
+
+  <!-- icon-brand : pen nib / stylized diamond -->
+  <symbol id="icon-brand" viewBox="0 0 32 32">
+    <!-- diamond gem shape -->
+    <polygon points="16,3 28,12 16,29 4,12" fill="none" stroke="#000080" stroke-width="1.5" stroke-linejoin="miter"/>
+    <!-- facet lines -->
+    <line x1="4"  y1="12" x2="28" y2="12" stroke="#000080" stroke-width="1"/>
+    <line x1="16" y1="3"  x2="4"  y2="12" stroke="#000080" stroke-width="1"/>
+    <line x1="16" y1="3"  x2="28" y2="12" stroke="#000080" stroke-width="1"/>
+    <line x1="10" y1="12" x2="16" y2="3"  stroke="#000080" stroke-width="1"/>
+    <line x1="22" y1="12" x2="16" y2="3"  stroke="#000080" stroke-width="1"/>
+  </symbol>
+
+  <!-- icon-emerging : atom / AR circles -->
+  <symbol id="icon-emerging" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="3" fill="#000080"/>
+    <ellipse cx="16" cy="16" rx="13" ry="5" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <ellipse cx="16" cy="16" rx="13" ry="5" fill="none" stroke="#000080" stroke-width="1.5" transform="rotate(60 16 16)"/>
+    <ellipse cx="16" cy="16" rx="13" ry="5" fill="none" stroke="#000080" stroke-width="1.5" transform="rotate(-60 16 16)"/>
+  </symbol>
+
+  <!-- ===================== CONTACT ===================== -->
+
+  <!-- icon-location : pin drop -->
+  <symbol id="icon-location" viewBox="0 0 32 32">
+    <path d="M16 3 C10 3 6 8 6 13 C6 21 16 29 16 29 C16 29 26 21 26 13 C26 8 22 3 16 3 Z" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <circle cx="16" cy="13" r="4" fill="#000080"/>
+  </symbol>
+
+  <!-- icon-email : envelope -->
+  <symbol id="icon-email" viewBox="0 0 32 32">
+    <rect x="3" y="8" width="26" height="17" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <polyline points="3,8 16,18 29,8" fill="none" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-phone : classic handset -->
+  <symbol id="icon-phone" viewBox="0 0 32 32">
+    <path d="M8 4 H14 L17 11 L13 14 C14 18 18 22 22 23 L25 19 L31 22 V28 C31 28 25 31 16 25 C7 19 4 10 4 10 Z"
+          fill="none" stroke="#000080" stroke-width="1.5" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- ===================== SOCIAL / LINKS ===================== -->
+
+  <!-- icon-linkedin : stylised "in" box -->
+  <symbol id="icon-linkedin" viewBox="0 0 32 32">
+    <rect x="2" y="2" width="28" height="28" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <rect x="7" y="13" width="4" height="12" fill="#000080"/>
+    <circle cx="9" cy="9" r="2.5" fill="#000080"/>
+    <path d="M15 13 H19 V16 C19 16 20 13 24 13 H25 V25 H21 V19 C21 16 19 16 19 16 V25 H15 Z" fill="#000080"/>
+  </symbol>
+
+  <!-- icon-behance : stylised "Be" -->
+  <symbol id="icon-behance" viewBox="0 0 32 32">
+    <rect x="2" y="2" width="28" height="28" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <path d="M6 10 H14 C17 10 18 12 18 14 C18 16 17 17 15 17.5 C18 18 19 19.5 19 22 C19 25 17 26 14 26 H6 Z"
+          fill="none" stroke="#000080" stroke-width="1.5"/>
+    <line x1="6"  y1="18" x2="17" y2="18" stroke="#000080" stroke-width="1.5"/>
+    <line x1="20" y1="11" x2="29" y2="11" stroke="#000080" stroke-width="1.5"/>
+    <path d="M20 19 C20 15 24 14 27 16 C29 17.5 29 20 26 21 H20" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <path d="M20 21 C20 24 23 25 26 24" fill="none" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-dribbble : circle with swooshes -->
+  <symbol id="icon-dribbble" viewBox="0 0 32 32">
+    <rect x="2" y="2" width="28" height="28" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <circle cx="16" cy="16" r="10" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <path d="M6 12 C10 14 14 14 18 11" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <path d="M11 7 C13 12 14 17 13 23" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <path d="M7 20 C11 19 18 20 25 17" fill="none" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  <!-- icon-github : pixel octocat silhouette -->
+  <symbol id="icon-github" viewBox="0 0 32 32">
+    <rect x="2" y="2" width="28" height="28" fill="none" stroke="#000080" stroke-width="1.5"/>
+    <path d="M16 6 C10 6 6 10 6 15 C6 19 8 22 12 23 C12 23 12 22 12 21 C9 21 8 19 8 15 C8 12 11 9 16 9 C21 9 24 12 24 15 C24 19 23 21 20 21 C20 22 20 23 20 23 C24 22 26 19 26 15 C26 10 22 6 16 6 Z" fill="#000080"/>
+    <path d="M12 21 C12 23 13 25 14 26 L14 29 L16 28 L18 29 L18 26 C19 25 20 23 20 21" fill="none" stroke="#000080" stroke-width="1.5"/>
+  </symbol>
+
+  </svg>
+  <!-- ===== TASKBAR ===== -->
   <nav id="navbar">
     <div class="logo">Eclipse-Studio</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"><svg width="14" height="14"><use href="#icon-home"></use></svg> Home</a></li>
+      <li><a href="#about"><svg width="14" height="14"><use href="#icon-about"></use></svg> About</a></li>
+      <li><a href="#portfolio"><svg width="14" height="14"><use href="#icon-portfolio"></use></svg> Portfolio</a></li>
+      <li><a href="#services"><svg width="14" height="14"><use href="#icon-services"></use></svg> Services</a></li>
+      <li><a href="#contact"><svg width="14" height="14"><use href="#icon-contact"></use></svg> Contact</a></li>
+    </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
   </nav>
+
+  <!-- ===== MARQUEE BAR ===== -->
+  <div class="win-marquee-bar">
+    <marquee>★ Welcome to Eclipse-Studio — ICT Multimedia Application Designer · Cape Town, South Africa · Available for freelance · Web · Branding · Motion · Apps · eclipsebymjh@gmail.com ★</marquee>
+  </div>
+
+  <!-- ===== DESKTOP ICONS ===== -->
+  <div class="win-desktop-icons">
+    <div class="win-icon">
+      <div class="win-icon-img"><svg width="32" height="32"><use href="#icon-my-projects"></use></svg></div>
+      <div class="win-icon-label">My Projects</div>
+    </div>
+    <div class="win-icon">
+      <div class="win-icon-img"><svg width="32" height="32"><use href="#icon-email-client"></use></svg></div>
+      <div class="win-icon-label">Outlook Express</div>
+    </div>
+    <div class="win-icon">
+      <div class="win-icon-img"><svg width="32" height="32"><use href="#icon-browser"></use></svg></div>
+      <div class="win-icon-label">Internet Explorer</div>
+    </div>
+    <div class="win-icon">
+      <div class="win-icon-img"><svg width="32" height="32"><use href="#icon-paint"></use></svg></div>
+      <div class="win-icon-label">MS Paint</div>
+    </div>
+    <div class="win-icon">
+      <div class="win-icon-img"><svg width="32" height="32"><use href="#icon-notepad"></use></svg></div>
+      <div class="win-icon-label">Notepad</div>
+    </div>
+  </div>
 
   <!-- ===== HOME ===== -->
   <section id="home">
@@ -38,28 +294,33 @@
       <div class="kb-slide kb-slide-3"></div>
     </div>
     <div class="hero-overlay"></div>
-
     <div class="home-bg-grid"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <div class="hero-content">
-      <div class="tag-pill hero-entry">
-        <span class="pulse-dot"></span>
-        Available for freelance projects
-      </div>
-      <h1 class="hero-entry-2">
-        Crafting Digital<br>
-        <span class="gradient-text">Experiences</span>
-      </h1>
-      <p class="hero-sub hero-entry-3">
-        ICT Multimedia Application Designer blending interactive technology,
-        motion design, and strategic UX to build unforgettable digital products.
-      </p>
-      <div class="cta-group hero-entry-4">
-        <a href="#portfolio" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-outline">Get In Touch</a>
+      <div class="hero-content-inner">
+        <div class="tag-pill hero-entry">
+          <span class="pulse-dot"></span>
+          Available for freelance projects
+        </div>
+        <h1 class="hero-entry-2">
+          Crafting Digital<br>
+          <span class="gradient-text">Experiences</span>
+        </h1>
+        <p class="hero-sub hero-entry-3">
+          ICT Multimedia Application Designer blending interactive technology,
+          motion design, and strategic UX to build unforgettable digital products.
+        </p>
+        <div class="cta-group hero-entry-4">
+          <a href="#portfolio" class="btn-primary">
+            <svg width="14" height="14" style="margin-right:4px;vertical-align:middle"><use href="#icon-folder-open"></use></svg>View My Work
+          </a>
+          <a href="#contact" class="btn-outline">
+            <svg width="14" height="14" style="margin-right:4px;vertical-align:middle"><use href="#icon-send"></use></svg>Get In Touch
+          </a>
+        </div>
       </div>
     </div>
 
@@ -93,14 +354,14 @@
           line of code or placing a single pixel. I collaborate closely with developers,
           stakeholders, and users to deliver products that are not just beautiful, but genuinely useful.
         </p>
-        
+
         <div class="skills-grid reveal delay-3">
           <span class="skill-chip">UI / UX Design</span>
           <span class="skill-chip">Motion Graphics</span>
           <span class="skill-chip">React / Vue</span>
           <span class="skill-chip">Figma</span>
           <span class="skill-chip">After Effects</span>
-          <span class="skill-chip">Android & iOS Apps</span>
+          <span class="skill-chip">Android &amp; iOS Apps</span>
           <span class="skill-chip">3D Modeling</span>
           <span class="skill-chip">Branding</span>
           <span class="skill-chip">Video Production</span>
@@ -110,129 +371,122 @@
     </div>
   </section>
 
-<!-- ===== PORTFOLIO ===== -->
-<section id="portfolio">
-  <div class="container">
-    <div class="section-label reveal">Selected Work</div>
-    <h2 class="section-title reveal delay-1">Portfolio</h2>
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-label reveal">Selected Work</div>
+      <h2 class="section-title reveal delay-1">Portfolio</h2>
 
-    <div class="portfolio-filter reveal delay-2">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="app">App Design</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="motion">Motion</button>
-      <button class="filter-btn" data-filter="brand">Branding</button>
-    </div>
-
-    <div class="portfolio-grid" id="projectGrid">
-
-      <!-- Spade & Archer -->
-      <div class="project-card reveal delay-3" data-cat="brand">
-        <div class="project-thumb">
-          <img src="images/SpadeandArcher.png" alt="Spade & Archer Company Profile">
-        </div>
-        <div class="project-info">
-          <div class="project-cat">Branding · Company Profile</div>
-          <div class="project-name">Spade & Archer — Company Profile</div>
-          <div class="project-desc">
-            A full company profile document for Spade & Archer, a private 
-            investigation firm operating across South Africa. Includes 
-            mission statement, core values, products and services, 
-            target market personas, and contact information.
-          </div>
-          <div class="project-tags">
-            <span class="project-tag">Brand Strategy</span>
-            <span class="project-tag">Company Profile</span>
-            <span class="project-tag">Target Market</span>
-          </div>
-          <div style="margin-top: 16px;">
-            <a href="assets/Company_Profile_Spade_and_Archer.pdf" target="_blank" class="btn-primary" style="font-size:0.85rem; padding: 8px 18px;">
-              View Company Profile →
-            </a>
-          </div>
-        </div>
+      <div class="portfolio-filter reveal delay-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="app">App Design</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="motion">Motion</button>
+        <button class="filter-btn" data-filter="brand">Branding</button>
       </div>
 
-      <!-- Eclipse Clothing -->
-      <div class="project-card reveal delay-2" data-cat="brand">
-        <div class="project-thumb">
-          <img src="images/Eclipse.png" alt="Eclipse Clothing Brand Guide">
+      <div class="portfolio-grid" id="projectGrid">
+
+        <!-- Spade & Archer -->
+        <div class="project-card reveal delay-3" data-cat="brand">
+          <div class="project-thumb">
+            <img src="images/SpadeandArcher.png" alt="Spade &amp; Archer Company Profile">
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Branding · Company Profile</div>
+            <div class="project-name">Spade &amp; Archer — Company Profile</div>
+            <div class="project-desc">
+              A full company profile document for Spade &amp; Archer, a private
+              investigation firm operating across South Africa.
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Brand Strategy</span>
+              <span class="project-tag">Company Profile</span>
+              <span class="project-tag">Target Market</span>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="assets/Company_Profile_Spade_and_Archer.pdf" target="_blank" class="btn-primary" style="font-size:11px;">
+                <svg width="12" height="12" style="margin-right:4px;vertical-align:middle"><use href="#icon-doc"></use></svg>View Company Profile
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="project-info">
-          <div class="project-cat">Branding</div>
-          <div class="project-name">Eclipse Clothing — Brand Guide</div>
-          <div class="project-desc">
-            A comprehensive brand identity system for Eclipse Clothing, 
-            a cosmic-inspired fashion label. Covers logo variations, 
-            colour palette, typography hierarchy, brand personality, 
-            logo usage guidelines, digital and print specifications, 
-            and apparel mockups.
+
+        <!-- Eclipse Clothing -->
+        <div class="project-card reveal delay-2" data-cat="brand">
+          <div class="project-thumb">
+            <img src="images/Eclipse.png" alt="Eclipse Clothing Brand Guide">
           </div>
-          <div class="project-tags">
-            <span class="project-tag">Brand Identity</span>
-            <span class="project-tag">Typography</span>
-            <span class="project-tag">Mockups</span>
-          </div>
-          <div style="margin-top: 16px;">
-            <a href="assets/BusinessY-BrandGuide.pdf" target="_blank" class="btn-primary" style="font-size:0.85rem; padding: 8px 18px;">
-              View Brand Guide →
-            </a>
+          <div class="project-info">
+            <div class="project-cat">Branding</div>
+            <div class="project-name">Eclipse Clothing — Brand Guide</div>
+            <div class="project-desc">
+              A comprehensive brand identity system for Eclipse Clothing, a cosmic-inspired fashion label.
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Brand Identity</span>
+              <span class="project-tag">Typography</span>
+              <span class="project-tag">Mockups</span>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="assets/BusinessY-BrandGuide.pdf" target="_blank" class="btn-primary" style="font-size:11px;">
+                <svg width="12" height="12" style="margin-right:4px;vertical-align:middle"><use href="#icon-doc"></use></svg>View Brand Guide
+              </a>
+            </div>
           </div>
         </div>
+
+        <!-- Droewors -->
+        <div class="project-card reveal delay-1" data-cat="web">
+          <div class="project-thumb">
+            <img src="images/droewors-preview.png" alt="Droewors Website">
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Web Design</div>
+            <div class="project-name">Droewors — Brand Website</div>
+            <div class="project-desc">
+              A fully designed and developed brand website for a South African droewors product.
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="droewors/Homepage.html" target="_blank" class="btn-primary" style="font-size:11px;">
+                <svg width="12" height="12" style="margin-right:4px;vertical-align:middle"><use href="#icon-globe"></use></svg>View Live Site
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- VibeCart -->
+        <div class="project-card reveal delay-1" data-cat="app">
+          <div class="project-thumb tall">
+            <img src="images/VibeCart.png" alt="VibeCart Home Screen">
+          </div>
+          <div class="project-info">
+            <div class="project-cat">Mobile App Design · UI/UX</div>
+            <div class="project-name">VibeCart — Home Screen</div>
+            <div class="project-desc">
+              Modern e-commerce home screen featuring smart search, daily deals, and trending products.
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Figma</span>
+              <span class="project-tag">Mobile UI</span>
+              <span class="project-tag">E-commerce</span>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="https://www.figma.com/proto/8tj8niEmRKnP3D1KATriZn/VibeCart?node-id=31-325&t=qXIGUrkR57Sx52mo-1" target="_blank" class="btn-primary" style="font-size:11px;">
+                <svg width="12" height="12" style="margin-right:4px;vertical-align:middle"><use href="#icon-link"></use></svg>View in Figma
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- Droewors -->
-      <div class="project-card reveal delay-1" data-cat="web">
-        <div class="project-thumb">
-          <img src="images/droewors-preview.png" alt="Droewors Website">
-        </div>
-        <div class="project-info">
-          <div class="project-cat">Web Design</div>
-          <div class="project-name">Droewors — Brand Website</div>
-          <div class="project-desc">
-            A fully designed and developed brand website for a South African 
-            droewors product. Features product showcasing, brand identity, 
-            and a responsive layout built with HTML, CSS and JavaScript.
-          </div>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JavaScript</span>
-          </div>
-          <div style="margin-top: 16px;">
-            <a href="droewors/Homepage.html" target="_blank" class="btn-primary" style="font-size:0.85rem; padding: 8px 18px;">
-              View Live Site →
-            </a>
-          </div>
-        </div>
-      </div>
-
-<div class="project-card reveal delay-1" data-cat="app">
-  <div class="project-thumb tall">
-    <img src="images/VibeCart.png" alt="Fashion Lover Home Screen">
-  </div>
-  <div class="project-info">
-    <div class="project-cat">Mobile App Design • UI/UX</div>
-    <div class="project-name">VibeCart — Home Screen</div>
-    <div class="project-desc">
-      Modern e-commerce home screen featuring personalized greeting, smart search, 
-      category navigation, daily deals, and trending products.
     </div>
-    <div class="project-tags">
-      <span class="project-tag">Figma</span>
-      <span class="project-tag">Mobile UI</span>
-      <span class="project-tag">E-commerce</span>
-    </div>
-    
-    <div style="margin-top: 20px;">
-      <a href="https://www.figma.com/proto/8tj8niEmRKnP3D1KATriZn/VibeCart?node-id=31-325&t=qXIGUrkR57Sx52mo-1" target="_blank" class="btn-primary" style="font-size:0.85rem; padding: 9px 20px;">
-        View in Figma →
-      </a>
-    </div>
-  </div>
-</div>
-
-</section>
+  </section>
 
   <!-- ===== SERVICES ===== -->
   <section id="services">
@@ -241,39 +495,30 @@
       <h2 class="section-title reveal delay-1">Services</h2>
 
       <div class="services-grid">
-        <!-- Services with SVG icons (unchanged from previous version) -->
+
         <div class="service-card reveal">
           <div class="service-icon">
-            <svg width="58" height="58" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="10" width="32" height="28" rx="3" stroke="#aa00ff" stroke-width="2.5"/>
-              <path d="M8 18H40" stroke="#aa00ff" stroke-width="2"/>
-              <rect x="14" y="24" width="8" height="8" rx="1" stroke="#aa00ff" stroke-width="2"/>
-              <rect x="26" y="24" width="8" height="4" rx="1" stroke="#aa00ff" stroke-width="2"/>
-            </svg>
+            <svg width="32" height="32"><use href="#icon-uiux"></use></svg>
           </div>
           <div class="service-name">UI / UX Design</div>
           <div class="service-desc">Human-centred design grounded in research, prototyping, and iterative testing.</div>
           <ul class="service-list">
-            <li>User research & journey mapping</li>
-            <li>Wireframes & interactive prototypes</li>
-            <li>Design systems & component libraries</li>
+            <li>User research &amp; journey mapping</li>
+            <li>Wireframes &amp; interactive prototypes</li>
+            <li>Design systems &amp; component libraries</li>
             <li>Accessibility audits</li>
           </ul>
         </div>
 
         <div class="service-card reveal delay-1">
           <div class="service-icon">
-            <svg width="58" height="58" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="14" y="8" width="20" height="32" rx="4" stroke="#aa00ff" stroke-width="2.5"/>
-              <rect x="19" y="12" width="10" height="2" rx="1" fill="#aa00ff"/>
-              <circle cx="24" cy="36" r="2" fill="#aa00ff"/>
-            </svg>
+            <svg width="32" height="32"><use href="#icon-mobile"></use></svg>
           </div>
           <div class="service-name">Mobile App Design</div>
           <div class="service-desc">End-to-end design for iOS and Android applications, from concept through to developer handoff.</div>
           <ul class="service-list">
-            <li>Native & cross-platform design</li>
-            <li>Gesture & micro-interaction design</li>
+            <li>Native &amp; cross-platform design</li>
+            <li>Gesture &amp; micro-interaction design</li>
             <li>App Store asset creation</li>
             <li>Usability testing</li>
           </ul>
@@ -281,17 +526,13 @@
 
         <div class="service-card reveal delay-2">
           <div class="service-icon">
-            <svg width="58" height="58" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="14" width="28" height="20" rx="3" stroke="#aa00ff" stroke-width="2.5"/>
-              <polygon points="20,20 20,28 30,24" fill="#aa00ff"/>
-              <path d="M34 18 L38 18 L38 30 L34 30" stroke="#aa00ff" stroke-width="2.5" stroke-linejoin="round"/>
-            </svg>
+            <svg width="32" height="32"><use href="#icon-motion"></use></svg>
           </div>
-          <div class="service-name">Motion & Video</div>
+          <div class="service-name">Motion &amp; Video</div>
           <div class="service-desc">Dynamic motion graphics, explainer animations, and branded video content for every platform.</div>
           <ul class="service-list">
-            <li>Brand films & explainers</li>
-            <li>UI animation & transitions</li>
+            <li>Brand films &amp; explainers</li>
+            <li>UI animation &amp; transitions</li>
             <li>Social media content packs</li>
             <li>3D product visualisation</li>
           </ul>
@@ -299,15 +540,10 @@
 
         <div class="service-card reveal">
           <div class="service-icon">
-            <svg width="58" height="58" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="12" width="32" height="24" rx="3" stroke="#aa00ff" stroke-width="2.5"/>
-              <path d="M14 20 L18 26 L14 32" stroke="#aa00ff" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M24 20 L26 32" stroke="#aa00ff" stroke-width="2.5"/>
-              <path d="M34 20 L30 26 L34 32" stroke="#aa00ff" stroke-width="2.5" stroke-linejoin="round"/>
-            </svg>
+            <svg width="32" height="32"><use href="#icon-webdev"></use></svg>
           </div>
           <div class="service-name">Web Development</div>
-          <div class="service-desc">Pixel-perfect, performant web experiences built with modern frameworks — designed and coded in-house.</div>
+          <div class="service-desc">Pixel-perfect, performant web experiences built with modern frameworks.</div>
           <ul class="service-list">
             <li>React / Vue / Next.js builds</li>
             <li>Interactive data visualisations</li>
@@ -318,41 +554,34 @@
 
         <div class="service-card reveal delay-1">
           <div class="service-icon">
-            <svg width="58" height="58" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="16" stroke="#aa00ff" stroke-width="2.5"/>
-              <path d="M18 18 L30 30" stroke="#aa00ff" stroke-width="2"/>
-              <path d="M30 18 L18 30" stroke="#aa00ff" stroke-width="2"/>
-              <circle cx="24" cy="24" r="6" stroke="#aa00ff" stroke-width="2"/>
-            </svg>
+            <svg width="32" height="32"><use href="#icon-brand"></use></svg>
           </div>
           <div class="service-name">Brand Identity</div>
           <div class="service-desc">Comprehensive brand strategy and visual identity design — from naming to full guideline books.</div>
           <ul class="service-list">
-            <li>Logo design & wordmarks</li>
-            <li>Colour, type & icon systems</li>
+            <li>Logo design &amp; wordmarks</li>
+            <li>Colour, type &amp; icon systems</li>
             <li>Brand guidelines document</li>
-            <li>Print & collateral design</li>
+            <li>Print &amp; collateral design</li>
           </ul>
         </div>
 
         <div class="service-card reveal delay-2">
           <div class="service-icon">
-            <svg width="58" height="58" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 10 L34 20 L34 28 L24 38 L14 28 L14 20 Z" stroke="#aa00ff" stroke-width="2.5"/>
-              <circle cx="24" cy="20" r="4" stroke="#aa00ff" stroke-width="2"/>
-              <path d="M20 30 H28" stroke="#aa00ff" stroke-width="2"/>
-            </svg>
+            <svg width="32" height="32"><use href="#icon-emerging"></use></svg>
           </div>
           <div class="service-name">Emerging Tech</div>
           <div class="service-desc">Exploring AR, spatial computing, and generative AI to deliver tomorrow's interactions today.</div>
           <ul class="service-list">
             <li>AR / VR concept design</li>
             <li>AI-enhanced interfaces</li>
-            <li>Kiosk & touchscreen design</li>
+            <li>Kiosk &amp; touchscreen design</li>
             <li>Voice UI prototyping</li>
           </ul>
         </div>
+
       </div>
+    </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
@@ -364,28 +593,20 @@
       <div class="contact-grid">
         <div class="contact-info reveal delay-1">
           <p class="body-text">Have a project in mind? I'd love to hear about it. Reach out and let's build something remarkable together.</p>
-          
+
           <div class="contact-item">
             <div class="contact-icon">
-              <!-- Location Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.13 2 5 5.13 5 9C5 14 12 22 12 22C12 22 19 14 19 9C19 5.13 15.87 2 12 2Z" stroke="#aa00ff" stroke-width="2" stroke-linejoin="round"/>
-                <circle cx="12" cy="9" r="3" stroke="#aa00ff" stroke-width="2"/>
-              </svg>
+              <svg width="16" height="16"><use href="#icon-location"></use></svg>
             </div>
             <div class="contact-detail">
               <strong>Cape Town, South Africa</strong>
-              Available for remote & on-site work
+              Available for remote &amp; on-site work
             </div>
           </div>
 
           <div class="contact-item">
             <div class="contact-icon">
-              <!-- Email Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="5" width="18" height="14" rx="2" stroke="#aa00ff" stroke-width="2"/>
-                <path d="M3 7 L12 13 L21 7" stroke="#aa00ff" stroke-width="2"/>
-              </svg>
+              <svg width="16" height="16"><use href="#icon-email"></use></svg>
             </div>
             <div class="contact-detail">
               <strong>eclipsebymjh@gmail.com</strong>
@@ -395,11 +616,7 @@
 
           <div class="contact-item">
             <div class="contact-icon">
-              <!-- Phone Icon -->
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17 2H7C5.89543 2 5 2.89543 5 4V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V4C19 2.89543 18.1046 2 17 2Z" stroke="#aa00ff" stroke-width="2"/>
-                <path d="M12 18H12.01" stroke="#aa00ff" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+              <svg width="16" height="16"><use href="#icon-phone"></use></svg>
             </div>
             <div class="contact-detail">
               <strong>+2772 585 9185</strong>
@@ -408,10 +625,18 @@
           </div>
 
           <div class="social-links">
-            <a href="#" class="social-btn" title="LinkedIn">in</a>
-            <a href="#" class="social-btn" title="Behance">Be</a>
-            <a href="#" class="social-btn" title="Dribbble">Dr</a>
-            <a href="#" class="social-btn" title="GitHub">GH</a>
+            <a href="#" class="social-btn" title="LinkedIn">
+              <svg width="20" height="20"><use href="#icon-linkedin"></use></svg>
+            </a>
+            <a href="#" class="social-btn" title="Behance">
+              <svg width="20" height="20"><use href="#icon-behance"></use></svg>
+            </a>
+            <a href="#" class="social-btn" title="Dribbble">
+              <svg width="20" height="20"><use href="#icon-dribbble"></use></svg>
+            </a>
+            <a href="#" class="social-btn" title="GitHub">
+              <svg width="20" height="20"><use href="#icon-github"></use></svg>
+            </a>
           </div>
         </div>
 
@@ -436,7 +661,7 @@
               <option value="">Select a service…</option>
               <option>UI / UX Design</option>
               <option>Mobile App Design</option>
-              <option>Motion & Video</option>
+              <option>Motion &amp; Video</option>
               <option>Web Development</option>
               <option>Brand Identity</option>
               <option>Emerging Tech</option>
@@ -446,7 +671,9 @@
             <label class="form-label" for="message">Message</label>
             <textarea id="message" class="form-textarea" placeholder="Tell me about your project…" required></textarea>
           </div>
-          <button type="submit" class="btn-primary btn-block">Send Message →</button>
+          <button type="submit" class="btn-primary btn-block">
+            <svg width="14" height="14" style="margin-right:4px;vertical-align:middle"><use href="#icon-send"></use></svg>Send Message
+          </button>
           <div class="success-msg" id="successMsg">
             ✓ Message sent! I'll be in touch within 24 hours.
           </div>
@@ -459,7 +686,7 @@
   <footer>
     <div class="logo">Eclipse-Studio</div>
     <span>© 2025 Marco Human · ICT Multimedia Application Designer</span>
-    <span>Designed & built in Cape Town 🇿🇦</span>
+    <span>🇿🇦 Cape Town</span>
   </footer>
 
   <script src="js/main.js"></script>
